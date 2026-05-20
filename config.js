@@ -8,7 +8,7 @@
  */
 window.__APP_CONFIG__ = {
   // GAS Web アプリのデプロイURL（/exec で終わるもの）
-  GAS_URL: 'https://script.google.com/macros/s/AKfycbxNrPKNHW9tD9xGGqINmm114ua-Q2obzIG2QNFBmD6kb4yRVzjnmxH7MOLHUTcwNrHlIw/exec',
+  GAS_URL: 'https://script.google.com/macros/s/AKfycbzeHVcM7ccuEqF424pn0-ksbsQ0fFxvwip-QVkzO2mh-OaXVlvsrvdAkpK-8lP5slizJQ/exec',
 
   // 合言葉の SHA-256 ハッシュ値（小文字16進64桁）
   // `hash-tool.html` をブラウザで開き、合言葉を入力して生成してください。
