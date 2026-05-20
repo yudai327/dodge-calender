@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dodge Calendar</title>
+
+  <!-- FullCalendar -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/locales/ja.global.min.js"></script>
+
+  <!-- HTMX -->
+  <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+
+  <!-- fuse.js -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+
+  <!-- DOMPurify -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- ==== 認証画面 ==== -->
+  <section id="auth-view" class="view hidden">
+    <div class="auth-card">
+      <h1>Dodge Calendar</h1>
+      <p class="muted">合言葉を入力してください</p>
+      <form id="auth-form" autocomplete="off">
+        <input
+          id="auth-input"
+          type="password"
+          name="passphrase"
+          placeholder="合言葉"
+          required
+          autofocus
+        />
+        <button type="submit">入る</button>
+      </form>
+      <p id="auth-error" class="error hidden">合言葉が違います</p>
+    </div>
+  </section>
+
+  <!-- ==== メイン画面 ==== -->
+  <section id="main-view" class="view hidden">
+    <header class="topbar">
+      <h1 class="brand">Dodge Calendar</h1>
+      <nav class="tabs">
+        <button class="tab active" data-tab="calendar">カレンダー</button>
+        <button class="tab" data-tab="search">検索</button>
+        <button class="tab logout" id="logout-btn" title="ログアウト">×</button>
+      </nav>
+    </header>
+
+    <!-- カレンダーパネル -->
+    <main id="panel-calendar" class="panel">
+      <div id="calendar"></div>
+    </main>
+
+    <!-- 検索パネル -->
+    <main id="panel-search" class="panel hidden">
+      <div class="search-bar">
+        <input id="search-input" type="search" placeholder="キーワード（タイトル・本文・対戦相手）" />
+        <input id="search-from" type="date" title="開始日" />
+        <span class="sep">〜</span>
+        <input id="search-to" type="date" title="終了日" />
+      </div>
+      <div id="search-results" class="results"></div>
+    </main>
+  </section>
+
+  <!-- ==== 記録詳細モーダル ==== -->
+  <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" aria-label="閉じる">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- 設定（公開リポジトリには config.js を含めない） -->
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
