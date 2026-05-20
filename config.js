@@ -12,5 +12,5 @@ window.__APP_CONFIG__ = {
 
   // 合言葉の SHA-256 ハッシュ値（小文字16進64桁）
   // `hash-tool.html` をブラウザで開き、合言葉を入力して生成してください。
-  PASSPHRASE_HASH: 'b571be147b163b11fd728cf1306b25c466c4f864ace83376e6c41bc831709544',
+  PASSPHRASE_HASH: '158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab',
 };
