@@ -1,0 +1,17 @@
+# 秘密の設定（GAS URL / 合言葉ハッシュ）
+config.js
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ログ
+*.log
+npm-debug.log*
+
+# 依存（このプロジェクトでは未使用だが念のため）
+node_modules/
