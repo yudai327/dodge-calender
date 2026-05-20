@@ -48,7 +48,7 @@ function initAuth() {
     errEl.classList.add('hidden');
     const value = input.value;
     const hash = await sha256Hex(value);
-    if (hash === PASSPHRASE_HASH) {
+    if (hash.toLowerCase() === PASSPHRASE_HASH.toLowerCase()) {
       sessionStorage.setItem(SESSION_KEY, '1');
       input.value = '';
       showMain();
