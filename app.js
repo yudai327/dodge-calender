@@ -333,7 +333,10 @@ function initModal() {
 
 function openModal(html) {
   const overlay = document.getElementById('modal-overlay');
-  document.getElementById('modal-content').innerHTML = DOMPurify.sanitize(html, { ALLOW_DATA_ATTR: true });
+  document.getElementById('modal-content').innerHTML = DOMPurify.sanitize(html, {
+    ALLOW_DATA_ATTR: true,
+    ADD_ATTR: ['name', 'value', 'required', 'maxlength', 'rows', 'placeholder'],
+  });
   overlay.classList.remove('hidden');
 }
 
