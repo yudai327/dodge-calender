@@ -333,7 +333,7 @@ function initModal() {
 
 function openModal(html) {
   const overlay = document.getElementById('modal-overlay');
-  document.getElementById('modal-content').innerHTML = DOMPurify.sanitize(html);
+  document.getElementById('modal-content').innerHTML = DOMPurify.sanitize(html, { ALLOW_DATA_ATTR: true });
   overlay.classList.remove('hidden');
 }
 
@@ -376,7 +376,7 @@ function renderRecordItem(r) {
 function renderRecordForm(rec) {
   const isEdit = !!rec.id;
   return `
-    <form class="form-grid" data-form="${isEdit ? 'edit' : 'create'}" data-id="${escapeAttr(rec.id || '')}">
+    <form class="form-grid" ${!isEdit ? 'id="record-create-form"' : ''} data-form="${isEdit ? 'edit' : 'create'}" data-id="${escapeAttr(rec.id || '')}">
       <label>日付
         <input type="date" name="date" value="${escapeAttr(rec.date || '')}" required />
       </label>
@@ -425,7 +425,7 @@ function bindRecordItemHandlers() {
 }
 
 function bindFormHandlers(dateStr) {
-  const form = document.querySelector('form[data-form="create"]');
+  const form = document.getElementById('record-create-form') || document.querySelector('form[data-form="create"]');
   if (!form) return;
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
